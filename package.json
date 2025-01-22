@@ -2,8 +2,8 @@
   "name": "av.webpack.configuration",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "scripts": {
+    "build": "webpack --config webpack.config.ts",
     "eslint": "eslint .",
     "eslint:fix": "eslint --fix ."
   },
@@ -16,7 +16,9 @@
     "@types/webpack": "^5.28.5",
     "@typescript-eslint/parser": "^8.21.0",
     "eslint": "^9.18.0",
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-perfectionist": "^4.7.0",
+    "eslint-plugin-unused-imports": "^4.1.4",
     "globals": "^15.14.0",
     "html-webpack-plugin": "^5.6.3",
     "prettier": "^3.4.2",

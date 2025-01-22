@@ -1,8 +1,8 @@
 import tsParser from "@typescript-eslint/parser";
+import unusedImports from "eslint-plugin-unused-imports";
 import perfectionist from "eslint-plugin-perfectionist";
 import globals from "globals";
 
-import perfectionistRules from "./perfectionist.js";
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
@@ -31,10 +31,23 @@ export default [
 
     plugins: {
       perfectionist,
+      "unused-imports": unusedImports,
     },
 
     rules: {
-      ...perfectionistRules,
+      "no-unused-vars": "off",
+
+      // Use unused-imports rule for unused imports
+      "unused-imports/no-unused-imports": "warn",  // Only show warning for unused imports
+      "unused-imports/no-unused-vars": [
+        "warn",
+        {
+          vars: "all",  // Warn about unused variables (including imports)
+          varsIgnorePattern: "^_",  // Ignore unused vars starting with underscore
+          args: "after-used",  // Warn for unused arguments after the last used argument
+          argsIgnorePattern: "^_",  // Ignore unused args starting with underscore
+        },
+      ],
     },
   },
   {
